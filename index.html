@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt.io</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="result">
+            <div class="english">
+                <p id="english"></p>
+            </div>
+            <div class="code"></div>
+        </div>
+        <div class="form">
+            <div class="fake-input">
+                <textarea name="text" class="text" placeholder="Write to your counsellor, friend,or just anyone secretly"></textarea>
+                <input type="submit" value="Encrypt" class="submit">
+            </div>
+        </div>
+        <footer>
+            <h4>Made by Savio09 on <a href="#">Github</a></h4>
+        </footer>
+    </div>
+    <script>
+        let submit = document.querySelector('.submit')
+            submit.addEventListener('click', ()=>{
+                let input = document.querySelector('.text').value,
+                    englishResult = document.querySelector('#english'),
+                    p = document.createElement('p');  
+                    englishResult.innerHTML = `${input}`;
+                for (let i = 0; i < input.length; i++) {
+                    //document.writeln(input.charCodeAt(i))
+                    /*This didn't work
+                    encrypt.innerHTML = `${input.charCodeAt(i)}`
+                    */
+                    let text = document.createTextNode(input.charCodeAt(i))
+                    p.appendChild(text)
+                    /*
+                    Traversing the DOM was the only way for me to this
+                    */
+                    document.body["firstElementChild"].firstElementChild.lastElementChild.appendChild(p)
+                }
+            })
+
+    </script>
+</body>
+</html>
